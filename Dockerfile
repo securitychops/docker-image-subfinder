@@ -3,6 +3,10 @@ FROM ubuntu:latest
 # setting maintainer
 LABEL maintainer="@securitychops"
 
+# build args
+ARG USERNAME=chops
+ARG PASSWORD=feelfreetochangebutonlyexiststostopdefaultuserfromrunningasroot
+
 # setup new user account and add to sudo
 RUN apt-get update && \
     echo "Y" | apt-get install -y sudo && \
