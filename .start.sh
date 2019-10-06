@@ -25,6 +25,6 @@ if [ -r /tmp/subomains.txt ]
 then
     if [ -s /tmp/subomains.txt ]
     then
-        aws s3 mv /tmp/subomains.txt s3://$S3_BUCKET_NAME/subdomains/$SCAN_ME_$current_time.domains
+        aws s3 mv /tmp/subomains.txt s3://$S3_BUCKET_NAME/subdomains/$SCAN_ME/$current_time.domains
     fi
 fi
