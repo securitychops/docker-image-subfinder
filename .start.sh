@@ -1,14 +1,13 @@
 #!/bin/bash
 
-export PATH=$PATH:~/go/bin
+export PATH=$PATH:/root/go/bin
 
-echo "$S3_BUCKET_KEY:$S3_BUCKET_SECRET" > ~/.config/s3fs/passwd-s3fs
-chmod 600 ~/.config/s3fs/passwd-s3fs
-s3fs $S3_BUCKET_NAME ~/mahbucket -o passwd_file=~/.config/s3fs/passwd-s3fs
+mkdir -p ~/.aws/
+echo "[default]" >> ~/.aws/credentials
+echo "aws_access_key_id = $S3_BUCKET_KEY" >> ~/.aws/credentials
+echo "aws_secret_access_key = $S3_BUCKET_SECRET" >> ~/.aws/credentials
 
-current_time=$(date "+%Y.%m.%d-%H.%M.%S")
-
-mkdir -p ~/mahbucket/subdomains/
+current_time=$(date "+%Y.%m.%d.%H.%M.%S")
 
 subfinder --set-config VirustotalAPIKey=$VIRUSTOTAL_API_KEY > /dev/null 2>&1
 subfinder --set-config PassivetotalUsername=$PASSIVETOTAL_USERNAME > /dev/null 2>&1
@@ -26,6 +25,6 @@ if [ -r /tmp/subomains.txt ]
 then
     if [ -s /tmp/subomains.txt ]
     then
-        mv /tmp/subomains.txt ~/mahbucket/subdomains/$SCAN_ME_$current_time.domains
+        aws s3 mv /tmp/subomains.txt s3://$S3_BUCKET_NAME/subdomains/$SCAN_ME_$current_time.domains
     fi
 fi
