@@ -16,7 +16,7 @@ subfinder --set-config PassivetotalKey=$PASSIVETOTAL_KEY > /dev/null 2>&1
 subfinder --set-config SecurityTrailsKey=$SECURITYTRAILS_KEY > /dev/null 2>&1
 subfinder --set-config RiddlerEmail=$RIDDLER_EMAIL > /dev/null 2>&1
 subfinder --set-config RiddlerPassword=$RIDDLER_PASSWORD > /dev/null 2>&1
-subfinder --set-config CensysUsername=$CENSY_SUSERNAME > /dev/null 2>&1
+subfinder --set-config CensysUsername=$CENSYS_USERNAME > /dev/null 2>&1
 subfinder --set-config CensysSecret=$CENSYS_SECRET > /dev/null 2>&1
 subfinder --set-config ShodanAPIKey=$SHODAN_API_KEY > /dev/null 2>&1
 
