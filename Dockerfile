@@ -12,7 +12,7 @@ RUN apt-get update && \
     echo "Y" | apt-get install -y sudo && \
     useradd -m $USERNAME && \
     echo "$USERNAME:$PASSWORD" | chpasswd && \
-    adduser $PASSWORD sudo && \
+    adduser $USERNAME sudo && \
     echo '%sudo ALL=(ALL) ALL' >> /etc/sudoers
 
 # setting default user to whatever is provided
