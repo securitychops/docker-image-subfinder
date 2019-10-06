@@ -1,3 +1,6 @@
+# setting maintainer
+LABEL maintainer="@securitychops"
+
 # grabbing latest ubuntu image
 FROM ubuntu:latest
 
