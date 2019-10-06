@@ -1,8 +1,7 @@
+FROM ubuntu:latest
+
 # setting maintainer
 LABEL maintainer="@securitychops"
-
-# grabbing latest ubuntu image
-FROM ubuntu:latest
 
 # setup new user account and add to sudo
 RUN apt-get update && \
