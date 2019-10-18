@@ -15,5 +15,5 @@ RUN chmod +x .start.sh && \
 
 RUN pip install awscli
 
-# run our script first yo dawg
+# run our script first yo dawg 
 CMD ["bash", ".start.sh"]
