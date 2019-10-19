@@ -17,7 +17,7 @@ subfinder --set-config CensysUsername=$CENSYS_USERNAME > /dev/null 2>&1
 subfinder --set-config CensysSecret=$CENSYS_SECRET > /dev/null 2>&1
 subfinder --set-config ShodanAPIKey=$SHODAN_API_KEY > /dev/null 2>&1
 
-subfinder -v -d $SCAN_ME -o /tmp/subdomains.txt
+subfinder -v --timeout 10 -d $SCAN_ME -o /tmp/subdomains.txt
 
 if [ -r /tmp/subdomains.txt ]
 then
