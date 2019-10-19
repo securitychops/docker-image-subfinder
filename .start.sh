@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export PATH=$PATH:/root/go/bin
-
 mkdir -p ~/.aws/
 echo "[default]" >> ~/.aws/credentials
 echo "aws_access_key_id = $S3_BUCKET_KEY" >> ~/.aws/credentials
