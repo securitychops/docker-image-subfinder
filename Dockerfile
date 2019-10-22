@@ -4,24 +4,19 @@ FROM golang:alpine
 LABEL maintainer="@securitychops"
 
 # using non root user
-RUN addgroup -S bender && \
-    adduser -S bender -G bender
+RUN addgroup -S bender
+RUN adduser -S bender -G bender
 
 # get startup script ready
 COPY .start.sh /home/bender
 
-RUN chmod +x /home/bender/.start.sh && \
-    # install the basics
-    apk add --update \
-    git \
-    python \
-    py-pip && \
-    # get aws
-    pip install awscli && \
-    # get subfinder
-    go get github.com/subfinder/subfinder && \
-    # dont need git anymore, kill it
-    apk del git
+RUN chmod +x /home/bender/.start.sh
+RUN apk add --update git
+RUN apk add --update python
+RUN apk add --update py-pip
+RUN pip install awscli
+RUN go get github.com/subfinder/subfinder
+RUN apk add --update 
 
 # we are now bender
 USER bender
