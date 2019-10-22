@@ -4,9 +4,9 @@ FROM golang:alpine
 LABEL maintainer="@securitychops"
 
 # get startup script ready
-COPY .start.sh /home/bender
+COPY .start.sh .
 
-RUN chmod +x /home/bender/.start.sh
+RUN chmod +x .start.sh
 RUN apk add --update git
 RUN apk add --update python
 RUN apk add --update py-pip
