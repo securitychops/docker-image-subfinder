@@ -17,5 +17,7 @@ COPY .start.sh /root/go/bin
 
 WORKDIR /root/go/bin
 
+RUN chmod +x .start.sh
+
 # run our script first yo dawg 
 CMD ["bash", ".start.sh"]
