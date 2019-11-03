@@ -3,7 +3,6 @@ FROM ubuntu:latest
 # setting maintainer
 LABEL maintainer="@securitychops"
 
-RUN chmod +x .start.sh
 RUN apt-get update
 RUN apt-get install -y git
 RUN apt-get install -y golang-go
