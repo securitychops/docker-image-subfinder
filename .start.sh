@@ -26,7 +26,7 @@ then
     then
         aws s3 mv /tmp/subdomains.txt s3://$S3_BUCKET_NAME/tmp/$UUID
 
-        echo '{"task_type":"screenshots","tld":"'$SCAN_ME'","domains_file":"'$UUID'","port_size":"'$PORT_SIZE'"}' > /tmp/$UUID
+        echo '{"task_type":"'$NEXT_STEP'","tld":"'$SCAN_ME'","domains_file":"'$UUID'","port_size":"'$PORT_SIZE'"}' > /tmp/$UUID
         aws s3 mv /tmp/$UUID s3://$S3_BUCKET_NAME/tasks/
 
     fi
