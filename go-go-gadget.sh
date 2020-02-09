@@ -5,6 +5,9 @@ echo "[default]" >> ~/.aws/credentials
 echo "aws_access_key_id = $S3_BUCKET_KEY" >> ~/.aws/credentials
 echo "aws_secret_access_key = $S3_BUCKET_SECRET" >> ~/.aws/credentials
 
+echo "[default]" >> ~/.aws/config
+echo "region = $AWS_REGION" >> ~/.aws/config
+
 UUID=$(cat /proc/sys/kernel/random/uuid)
 
 if [ ! -z "$BINARYEDGE_API_KEY" ]
@@ -63,6 +66,6 @@ then
     then
         aws s3 mv /tmp/subdomains.txt s3://$S3_BUCKET_NAME/tmp/$UUID
         echo '{"task_type":"'$NEXT_STEP'","tld":"'$SCAN_ME'","domains_file":"'$UUID'","port_size":"'$PORT_SIZE'"}' > /tmp/$UUID
-        aws s3 mv /tmp/$UUID s3://$S3_BUCKET_NAME/tasks/
+        aws sqs send-message --queue-url $SQS_URL --message-body $(cat /tmp/$UUID)
     fi
 fi
