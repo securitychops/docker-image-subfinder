@@ -67,5 +67,7 @@ then
         aws s3 mv /tmp/subdomains.txt s3://$S3_BUCKET_NAME/tmp/$UUID
         echo '{"task_type":"'$NEXT_STEP'","tld":"'$SCAN_ME'","domains_file":"'$UUID'","port_size":"'$PORT_SIZE'"}' > /tmp/$UUID
         aws sqs send-message --queue-url $SQS_URL --message-body $(cat /tmp/$UUID)
+        echo '{"task_type":"look_for_takeover","tld":"'$SCAN_ME'","domains_file":"'$UUID'"}' > /tmp/$UUID
+        aws sqs send-message --queue-url $SQS_URL --message-body $(cat /tmp/$UUID)
     fi
 fi
