@@ -70,9 +70,6 @@ then
         aws sqs send-message --queue-url $SQS_URL --message-body $(cat /tmp/$UUID)
         
         echo '{"task_type":"look_for_takeover","tld":"'$SCAN_ME'","domains_file":"'$UUID'"}' > /tmp/$UUID
-        aws sqs send-message --queue-url $SQS_URL --message-body $(cat /tmp/$UUID)
-        
-        echo '{"task_type":"slack","body":"subfinder_complete"}' > /tmp/$UUID
-        aws sqs send-message --queue-url $SQS_URL --message-body $(cat /tmp/$UUID)
+        aws sqs send-message --queue-url $SQS_URL --message-body $(cat /tmp/$UUID)        
     fi
 fi
